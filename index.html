@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revamp Rezy - Resume Consultancy</title>
+    <meta name="description" content="Revamp Rezy offers comprehensive resume transformation services to elevate your career prospects." />
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Import Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Import Material Symbols Outlined for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        /* Global Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            overflow-x: hidden;
+        }
+        h2 {font-weight: 100}
+        h3 {font-weight: 100}
+
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        /* Header */
+        header {
+            position: relative;
+            height: 60vh; /* Landing takes 60% of viewport height */
+            background: linear-gradient(135deg, #0F4C81 0%, #03396c 100%);
+            color: #fff;
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        header nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #03396c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            height: 60px;
+        }
+        header nav .logo { font-size: 1.5rem; color: #fff; }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li { margin-left: 1.5rem; }
+        /* Renamed "About Us" to "About" */
+        .nav-links a { color: #fff; font-size: 1rem; }
+        .hamburger { display: none; cursor: pointer; }
+        .hamburger .material-symbols-outlined { font-size: 2.5rem; color: #fff; }
+        .mobile-menu-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+        }
+        .mobile-menu-overlay ul { list-style: none; text-align: center; }
+        .mobile-menu-overlay li { margin: 1rem 0; }
+        .mobile-menu-overlay a { font-size: 2rem; color: #fff; }
+        /* Close button for mobile overlay */
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: #fff; cursor: pointer; }
+
+        /* Hero Text */
+        .hero-text { max-width: 600px; }
+        .hero-title { margin-bottom: 1rem; line-height: 1.2; }
+        .hero-title .large-word { font-size: 3.5rem; font-weight: 100}
+        .hero-title .small-word { font-size: 2rem; font-weight: 100}
+        .hero-subtitle { font-size: 1.5rem; margin-bottom: 2rem; }
+
+        /* Call-to-Action Button */
+        .cta-button {
+            display: inline-block;
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: none;
+        }
+        /* Desktop CTA Button: default white with blue text, 40% width, left aligned */
+        @media (min-width: 1025px) {
+            .cta-button.desktop {
+                background-color: #fff;
+                color: #0F4C81;
+                width: 40%;
+                margin: 1rem 0 0 0;
+            }
+            .cta-button.desktop:active,
+            .cta-button.desktop:focus {
+                background-color: #0F4C81;
+                color: #fff;
+                border: 2px solid #fff;
+            }
+            .cta-button.mobile { display: none; }
+        }
+        /* Mobile CTA Button: default blue with white text, 70% width, positioned at bottom of header */
+        @media (max-width: 1024px) {
+            .cta-button.mobile {
+                display: inline-block;
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #0F4C81;
+                color: #fff;
+                width: 70%;
+                text-align: center;
+                padding: 0.75rem 1.5rem;
+            }
+            .cta-button.mobile:active,
+            .cta-button.mobile:focus {
+                background-color: #fff;
+                color: #0F4C81;
+            }
+            .cta-button.desktop { display: none; }
+        }
+
+        /* Landing Content: 50/50 Layout on Desktop */
+        .landing-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 70vh; /* Full 70vh for desktop */
+            margin-top: 60px;
+        }
+        .landing-content .hero-text,
+        .landing-content .hero-img { width: 50%; }
+        .hero-img {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            padding: 0;  /* Remove any padding */
+            background: none;  /* Remove any background color */
+            box-shadow: none;  /* Remove any box-shadow */
+        }
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+
+        /* About Section */
+        #about {
+            background: #fff;
+            padding: 20px 0 4rem;
+        }
+        #about h2 {
+            font-size: 3.5rem;
+            color: #0F4C81;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        #about .about-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-content: center;
+            max-width: 3000px;
+        }
+        /* For desktop, keep the natural image size (or near it) while allocating approximate percentages */
+        #about .about-left {
+            flex: 0 0 40%; /* Fixed 20% width for the image */
+        }
+        #about .about-left img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        #about .about-right {
+            flex: 0 0 50%; /* 80% width for text */
+            /*padding-left: 15rem;*/
+            align-content: center;
+            padding-bottom: 5rem;
+        }
+        #about .about-right h2 { font-size: 3.5rem; color: #0F4C81; }
+        #about .about-right h3 { font-size: 2.5rem; font-weight: 100; margin-bottom:30px;}
+        #about .about-right p { font-size: 20px; color: #555; }
+
+        #about .about-right p .bold-text {font-weight: 400;}
+
+        /* Responsive About Section: Stack on Mobile */
+        @media (max-width: 1024px) {
+            #about .about-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 1rem;
+            }
+            #about h2{
+                margin-bottom: 0px;
+            }
+            #about .about-left,
+            #about .about-right {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+            #about .about-left {
+                margin-bottom: 1rem;
+                width:100%;
+                padding:0 5rem;
+            }
+
+            #about .about-right {
+                text-align: center;
+                padding-bottom: 0;
+            }
+        }
+
+        /* Our Process Section (Gray Background with Cards) */
+        #our-process { background: #f1f1f1; padding:20px 0; }
+        #our-process h2 { text-align: center; font-size: 3.5rem; margin-bottom: 2rem; color: #0F4C81; }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .process-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .process-card:hover { transform: translateY(-5px); }
+        .process-card h3 {
+            margin-bottom: 0.5rem;
+            color: #0F4C81;
+            font-size: 1.5rem; /* Increased for better readability */
+            font-weight: 300; /* Slightly bolder for better contrast */
+        }
+
+        .process-card p {
+            font-size: 1.1rem; /* Increased for better readability */
+            font-weight: 300;
+            color: #333; /* Darker text for better contrast */
+            line-height: 1.6; /* Improved spacing for readability */
+        }
+
+        /* Testimonials Section (White Background) */
+        #testimonials { background: #fff; padding: 4rem 0; }
+        #testimonials h2 { text-align: center; font-size: 3.5rem; margin-bottom: 2rem; color: #0F4C81; }
+        .testimonial-carousel {
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .testimonial-slide {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        .testimonial-slide p { font-size: 1.2rem; font-style: italic; color: #555; }
+        .testimonial-slide h4 { margin-top: 1rem; color: #0F4C81; font-weight: bold; }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            background: rgba(0,0,0,0.5);
+            user-select: none;
+            transform: translateY(-50%);
+            border: none;
+        }
+        .prev { left: 0; }
+        .next { right: 0; }
+
+        /* Contact Section (Gray Background) */
+        #contact { background: #fff; padding: 20px 0; }
+        #contact h2 { text-align: center; font-size: 3.5rem; margin-bottom: 2rem; color: #0F4C81; }
+        #contact h3 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #0F4C81; }
+        #contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        #contact-form input, #contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 100%;
+        }
+        #contact-form textarea { resize: vertical; min-height: 150px; }
+        #contact-form button {
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            background: #0F4C81;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        #contact-form button:hover { background: #03396c; }
+
+        .status-message {
+            display: none; /* Hidden by default */
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .status-message.success {
+            color: #0F4C81; /* Blue for success */
+            background: #e3f2fd; /* Light blue */
+            border: 1px solid #0F4C81;
+        }
+
+        .status-message.error {
+            color: #B00020; /* Red for error */
+            background: #FFEBEE; /* Light red */
+            border: 1px solid #B00020;
+        }
+
+
+
+
+        /* Footer */
+        footer { background: #0F4C81; color: #fff; padding: 1.5rem 2rem; }
+        .footer-container {
+            padding: 0; /* Remove padding */
+            margin: 0 auto; /* Ensures no extra margin */
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            header { background: url('colaboration_photo.jpeg') no-repeat center/cover; }
+            .landing-content {
+                position: relative;
+                height: 70vh;
+                margin-top: 60px;
+            }
+            .landing-content .hero-img { display: none; }
+            /* Position hero-text as an overlay card; left-justify text */
+            .landing-content .hero-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(15, 76, 129, 0.8);
+                padding: 1rem;
+                width: 90%;
+                text-align: left;
+            }
+            .hero-title .large-word { font-size: 2.5rem; }
+            .hero-title .small-word { font-size: 1.5rem; }
+            .hero-subtitle { font-size: 1.25rem; white-space: nowrap; }
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .process-grid { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 1025px) {
+            header { padding: 0; }
+            .landing-content { width: 100%; margin: 0; height: 70vh; }
+            .landing-content .hero-text {
+                width: 80%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: left;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-subtitle { font-size: 1rem; }
+        }
+        /* Center footer text on screens 1024px and below */
+        @media (max-width: 1024px) {
+            .footer-container p {
+                text-align: center;
+                white-space: pre-line; /* Allows line breaks */
+            }
+
+            .footer-container p::before {
+                content: "\A"; /* Inserts a line break before "All Rights Reserved" */
+                white-space: pre;
+            }
+        }
+        @media (min-width: 1025px) {
+            .footer-container p {
+                white-space: nowrap; /* Ensures text stays on a single line */
+            }
+
+            .footer-container p br {
+                display: none; /* Hides the forced break on desktop */
+            }
+        }
+    </style>
+
+</head>
+<body>
+<!-- Header Section -->
+<header>
+    <nav>
+        <div class="logo">Revamp Rezy</div>
+        <ul class="nav-links">
+            <!-- Renamed About Us to About -->
+            <li><a href="#about">About</a></li>
+            <li><a href="#our-process">Our Process</a></li>
+<!--            <li><a href="#testimonials">Testimonials</a></li>-->
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <span class="material-symbols-outlined">menu</span>
+        </div>
+    </nav>
+    <div class="landing-content">
+        <div class="hero-text">
+            <!-- Hero Title: Primary headline that grabs attention -->
+            <h1 class="hero-title">
+                <span class="large-word">Overlooked</span><br>
+                <span class="small-word">to</span><br>
+                <span class="large-word">Overbooked</span>
+            </h1>
+            <!-- Hero Subtitle: Secondary tagline reinforcing the main message -->
+            <p class="hero-subtitle">Elevate Your Resume To the Next Level</p>
+            <!-- Desktop CTA Button: left aligned within hero-text -->
+            <a href="#contact" class="cta-button desktop">Get Started</a>
+        </div>
+        <div class="hero-img">
+            <img src="colaboration_photo.jpeg" alt="Collaboration" />
+        </div>
+    </div>
+    <!-- Mobile CTA Button: positioned at bottom of header -->
+    <a href="#contact" class="cta-button mobile">Get Started</a>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="mobile-menu-overlay">
+    <span class="close-btn" onclick="toggleMobileMenu()">X</span>
+    <ul>
+        <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+        <li><a href="#our-process" onclick="toggleMobileMenu()">Our Process</a></li>
+        <li><a href="#testimonials" onclick="toggleMobileMenu()">Testimonials</a></li>
+        <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+    </ul>
+</div>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <h2>About</h2>
+        <div class="about-container">
+            <div class="about-left">
+                <img src="circle_profile.png" alt="Profile" />
+            </div>
+            <div class="about-right">
+                <h3>Your Resume Reimagined</h3>
+                <p>
+                    In a competitive job market, a strong resume is more than a list of qualifications—it must clearly convey impact.
+                    HR professionals, often unfamiliar with the intricacies of the roles they hire for, rely on predefined criteria.
+                    Without a well-structured resume, even highly qualified candidates risk being overlooked.
+                </p>
+                <br/>
+                <p>
+                    To address this challenge, <span class="bold-text">Akiva Futter</span> leverages <span class="bold-text">5+ years of experience in Product and Tech</span>
+                    to apply a <span class="bold-text">product-driven approach</span> to resume optimization. By strategically highlighting achievements,
+                    structuring responsibilities effectively, and ensuring a clean, professional design, he crafts resumes that
+                    capture attention and unlock career opportunities.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Our Process Section (Gray Background with Cards) -->
+<section id="our-process">
+    <div class="container">
+        <h2>Our Process</h2>
+        <div class="process-grid">
+            <div class="process-card">
+                <h3>Step 1: Intro Call</h3>
+                <p>We start with a personalized consultation to understand your career goals, answer any questions, and outline how our process aligns with your needs.</p>
+            </div>
+            <div class="process-card">
+                <h3>Step 2: Consulting Session</h3>
+                <p>We take a deep dive into your experience, highlighting not just what you did but the impact you made. We uncover key achievements and strengths to position you as a top candidate.</p>
+            </div>
+            <div class="process-card">
+                <h3>Step 3: Resume Rebuild</h3>
+                <p>Using insights from our consulting session, we craft a modern, compelling resume tailored to how hiring teams assess candidates. Your new resume will be sleek, strategic, and optimized for maximum impact.</p>
+            </div>
+            <div class="process-card">
+                <h3>Step 4: Follow-Up Session</h3>
+                <p>We review your resume together to ensure it effectively tells your professional story, refining details to highlight your unique strengths and value.</p>
+            </div>
+            <div class="process-card">
+                <h3>Step 5: Application Coaching</h3>
+                <p>We equip you with expert strategies on how to leverage your new resume, optimize job applications, and increase your chances of securing interviews.</p>
+            </div>
+            <div class="process-card">
+                <h3>Step 6: Ongoing Check-ins</h3>
+                <p>Need adjustments? We’ve got you covered! For up to three months, we’ll provide ongoing support, refining your resume or application approach to help you achieve the best results.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--&lt;!&ndash; Testimonials Section (White Background) &ndash;&gt;-->
+<!--<section id="testimonials">-->
+<!--    <div class="container">-->
+<!--        <h2>Testimonials</h2>-->
+<!--        <div class="testimonial-carousel">-->
+<!--            <div class="testimonial-slide" style="display: block;">-->
+<!--                <p>"Revamp Rezy transformed my resume and my career took off. Highly recommended!"</p>-->
+<!--                <h4>- Jane Doe</h4>-->
+<!--            </div>-->
+<!--            <div class="testimonial-slide">-->
+<!--                <p>"The personalized coaching and design made all the difference. I landed my dream job."</p>-->
+<!--                <h4>- John Smith</h4>-->
+<!--            </div>-->
+<!--            <button class="prev" onclick="prevSlide()">&#10094;</button>-->
+<!--            <button class="next" onclick="nextSlide()">&#10095;</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!-- Contact Section (Gray Background) -->
+<section id="contact">
+    <div class="container">
+        <h3>Contact Us to Get Started</h3>
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" value="send">Send Message</button>
+        </form>
+        <p id="status-message" class="status-message"></p>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container footer-container">
+        <p> HiredHelper LLC d/b/a Revamp Rezy &copy 2025 <br> All Rights Reserved</p>
+    </div>
+</footer>
+
+<!-- JavaScript for Mobile Menu and Testimonials Carousel -->
+<script>
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+        var mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.style.display = (mobileMenu.style.display === "flex") ? "none" : "flex";
+    }
+    // Testimonials Carousel
+    var slideIndex = 0;
+    showSlides();
+    function showSlides() {
+        var slides = document.getElementsByClassName("testimonial-slide");
+        for (var i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1; }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 5000);
+    }
+    function nextSlide() {
+        var slides = document.getElementsByClassName("testimonial-slide");
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1; }
+        for (var i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+        slides[slideIndex - 1].style.display = "block";
+    }
+    function prevSlide() {
+        var slides = document.getElementsByClassName("testimonial-slide");
+        slideIndex--;
+        if (slideIndex < 1) { slideIndex = slides.length; }
+        for (var i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+        slides[slideIndex - 1].style.display = "block";
+    }
+</script>
+<!-- Load EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        emailjs.init("_7eYQGBFzKQSVq75p"); // Initialize EmailJS with your Public Key
+
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            let form = this; // Reference to the form
+            let statusMsg = document.getElementById("status-message");
+            let submitButton = form.querySelector("button[type='submit']");
+
+            // Disable the button & change its style while sending
+            submitButton.disabled = true;
+            submitButton.style.backgroundColor = "#ccc"; // Gray color
+            submitButton.style.cursor = "not-allowed";
+
+            // Hide the message until a response comes back
+            statusMsg.style.display = "none";
+            statusMsg.classList.remove("success", "error"); // Clear previous styles
+
+            emailjs.sendForm("service_2vz28dp", "template_cva9gzj", form)
+                .then(function(response) {
+                    console.log("SUCCESS!", response.status, response.text);
+
+                    statusMsg.textContent = "Your message has been sent successfully!";
+                    statusMsg.classList.add("success");
+                    statusMsg.style.display = "block"; // Show after receiving response
+                    statusMsg.style.opacity = "0";
+
+                    setTimeout(() => {
+                        statusMsg.style.opacity = "1"; // Fade in
+                    }, 100);
+
+                    // Clear the form fields after successful submission
+                    form.reset();
+                })
+                .catch(function(error) {
+                    console.log("FAILED...", error);
+
+                    statusMsg.textContent = "Oops! Something went wrong. Please try again.";
+                    statusMsg.classList.add("error");
+                    statusMsg.style.display = "block"; // Show after receiving response
+                    statusMsg.style.opacity = "0";
+
+                    setTimeout(() => {
+                        statusMsg.style.opacity = "1"; // Fade in
+                    }, 100);
+                })
+                .finally(function() {
+                    // Re-enable the button and restore its original style
+                    submitButton.disabled = false;
+                    submitButton.style.backgroundColor = ""; // Reset to default
+                    submitButton.style.cursor = "pointer";
+                });
+        });
+    });
+</script>
+
+</body>
+</html>
