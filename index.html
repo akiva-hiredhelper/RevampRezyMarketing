@@ -23,9 +23,8 @@
             background: #f8f9fa;
             overflow-x: hidden;
         }
-        h2 {font-weight: 100}
-        h3 {font-weight: 100}
-
+        h2 { font-weight: 100; }
+        h3 { font-weight: 100; }
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
 
@@ -81,9 +80,10 @@
         /* Hero Text */
         .hero-text { max-width: 600px; }
         .hero-title { margin-bottom: 1rem; line-height: 1.2; }
-        .hero-title .large-word { font-size: 3.5rem; font-weight: 100}
-        .hero-title .small-word { font-size: 2rem; font-weight: 100}
-        .hero-subtitle { font-size: 1.5rem; margin-bottom: 2rem; }
+        .hero-title .large-word { font-size: 3.5rem; font-weight: 100; }
+        .hero-title .small-word { font-size: 2rem; font-weight: 100; }
+        /* Reduced margin-bottom for closer spacing */
+        .hero-subtitle { font-size: 1.5rem; margin-bottom: 1rem; }
 
         /* Call-to-Action Button */
         .cta-button {
@@ -97,13 +97,14 @@
             border: none;
             transition: none;
         }
-        /* Desktop CTA Button: default white with blue text, 40% width, left aligned */
+        /* Desktop CTA Button */
         @media (min-width: 1025px) {
             .cta-button.desktop {
                 background-color: #fff;
                 color: #0F4C81;
                 width: 40%;
-                margin: 1rem 0 0 0;
+                margin: 0.5rem 0 0 0;
+                font-weight: 300;
             }
             .cta-button.desktop:active,
             .cta-button.desktop:focus {
@@ -113,17 +114,17 @@
             }
             .cta-button.mobile { display: none; }
         }
-        /* Mobile CTA Button: default blue with white text, 70% width, positioned at bottom of header */
+        /* Mobile CTA Button */
         @media (max-width: 1024px) {
             .cta-button.mobile {
                 display: inline-block;
                 position: absolute;
-                bottom: 10px;
+                bottom: 60px;
                 left: 50%;
                 transform: translateX(-50%);
                 background-color: #0F4C81;
                 color: #fff;
-                width: 70%;
+                width: 50%;
                 text-align: center;
                 padding: 0.75rem 1.5rem;
             }
@@ -142,7 +143,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            height: 70vh; /* Full 70vh for desktop */
+            height: 70vh;
             margin-top: 60px;
         }
         .landing-content .hero-text,
@@ -151,9 +152,9 @@
             display: flex;
             justify-content: center;
             height: 100%;
-            padding: 0;  /* Remove any padding */
-            background: none;  /* Remove any background color */
-            box-shadow: none;  /* Remove any box-shadow */
+            padding: 0;
+            background: none;
+            box-shadow: none;
         }
         .hero-img img {
             width: 100%;
@@ -180,10 +181,7 @@
             align-content: center;
             max-width: 3000px;
         }
-        /* For desktop, keep the natural image size (or near it) while allocating approximate percentages */
-        #about .about-left {
-            flex: 0 0 40%; /* Fixed 20% width for the image */
-        }
+        #about .about-left { flex: 0 0 40%; }
         #about .about-left img {
             width: 100%;
             height: auto;
@@ -191,16 +189,14 @@
             border-radius: 8px;
         }
         #about .about-right {
-            flex: 0 0 50%; /* 80% width for text */
-            /*padding-left: 15rem;*/
+            flex: 0 0 50%;
             align-content: center;
             padding-bottom: 5rem;
         }
         #about .about-right h2 { font-size: 3.5rem; color: #0F4C81; }
-        #about .about-right h3 { font-size: 2.5rem; font-weight: 100; margin-bottom:30px;}
+        #about .about-right h3 { font-size: 2.5rem; margin-bottom: 30px; }
         #about .about-right p { font-size: 20px; color: #555; }
-
-        #about .about-right p .bold-text {font-weight: 400;}
+        #about .about-right p .bold-text { font-weight: 400; }
 
         /* Responsive About Section: Stack on Mobile */
         @media (max-width: 1024px) {
@@ -209,20 +205,13 @@
                 align-items: center;
                 padding: 0 1rem;
             }
-            #about h2{
-                margin-bottom: 0px;
-            }
+            #about h2 { margin-bottom: 0px; }
             #about .about-left,
-            #about .about-right {
-                flex: 0 0 auto;
-                width: 100%;
-            }
+            #about .about-right { width: 100%; }
             #about .about-left {
                 margin-bottom: 1rem;
-                width:100%;
-                padding:0 5rem;
+                padding: 0 5rem;
             }
-
             #about .about-right {
                 text-align: center;
                 padding-bottom: 0;
@@ -230,8 +219,13 @@
         }
 
         /* Our Process Section (Gray Background with Cards) */
-        #our-process { background: #f1f1f1; padding:20px 0; }
-        #our-process h2 { text-align: center; font-size: 3.5rem; margin-bottom: 2rem; color: #0F4C81; }
+        #our-process { background: #f1f1f1; padding: 20px 0; }
+        #our-process h2 {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #0F4C81;
+        }
         .process-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -241,7 +235,7 @@
             background: #fff;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s ease;
         }
@@ -249,20 +243,24 @@
         .process-card h3 {
             margin-bottom: 0.5rem;
             color: #0F4C81;
-            font-size: 1.5rem; /* Increased for better readability */
-            font-weight: 300; /* Slightly bolder for better contrast */
-        }
-
-        .process-card p {
-            font-size: 1.1rem; /* Increased for better readability */
+            font-size: 1.5rem;
             font-weight: 300;
-            color: #333; /* Darker text for better contrast */
-            line-height: 1.6; /* Improved spacing for readability */
+        }
+        .process-card p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #333;
+            line-height: 1.6;
         }
 
         /* Testimonials Section (White Background) */
         #testimonials { background: #fff; padding: 4rem 0; }
-        #testimonials h2 { text-align: center; font-size: 3.5rem; margin-bottom: 2rem; color: #0F4C81; }
+        #testimonials h2 {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #0F4C81;
+        }
         .testimonial-carousel {
             position: relative;
             overflow: hidden;
@@ -274,8 +272,16 @@
             text-align: center;
             padding: 2rem;
         }
-        .testimonial-slide p { font-size: 1.2rem; font-style: italic; color: #555; }
-        .testimonial-slide h4 { margin-top: 1rem; color: #0F4C81; font-weight: bold; }
+        .testimonial-slide p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+        }
+        .testimonial-slide h4 {
+            margin-top: 1rem;
+            color: #0F4C81;
+            font-weight: bold;
+        }
         .prev, .next {
             cursor: pointer;
             position: absolute;
@@ -284,7 +290,7 @@
             color: #fff;
             font-weight: bold;
             font-size: 18px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             user-select: none;
             transform: translateY(-50%);
             border: none;
@@ -294,8 +300,18 @@
 
         /* Contact Section (Gray Background) */
         #contact { background: #fff; padding: 20px 0; }
-        #contact h2 { text-align: center; font-size: 3.5rem; margin-bottom: 2rem; color: #0F4C81; }
-        #contact h3 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #0F4C81; }
+        #contact h2 {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #0F4C81;
+        }
+        #contact h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #0F4C81;
+        }
         #contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -322,9 +338,8 @@
             transition: background 0.3s ease;
         }
         #contact-form button:hover { background: #03396c; }
-
         .status-message {
-            display: none; /* Hidden by default */
+            display: none;
             font-size: 1rem;
             font-weight: 500;
             text-align: center;
@@ -337,29 +352,23 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
-
         .status-message.success {
-            color: #0F4C81; /* Blue for success */
-            background: #e3f2fd; /* Light blue */
+            color: #0F4C81;
+            background: #e3f2fd;
             border: 1px solid #0F4C81;
         }
-
         .status-message.error {
-            color: #B00020; /* Red for error */
-            background: #FFEBEE; /* Light red */
+            color: #B00020;
+            background: #FFEBEE;
             border: 1px solid #B00020;
         }
-
-
-
 
         /* Footer */
         footer { background: #0F4C81; color: #fff; padding: 1.5rem 2rem; }
         .footer-container {
-            padding: 0; /* Remove padding */
-            margin: 0 auto; /* Ensures no extra margin */
+            padding: 0;
+            margin: 0 auto;
         }
-
 
         /* Responsive Adjustments */
         @media (max-width: 1024px) {
@@ -370,16 +379,17 @@
                 margin-top: 60px;
             }
             .landing-content .hero-img { display: none; }
-            /* Position hero-text as an overlay card; left-justify text */
+            /* Position hero-text as an overlay card; equal padding on all sides and rounded edges */
             .landing-content .hero-text {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 background: rgba(15, 76, 129, 0.8);
-                padding: 1rem;
+                padding: 1rem 2rem;
                 width: 90%;
                 text-align: left;
+                border-radius: 8px;  /* Added border radius to match the CTA button */
             }
             .hero-title .large-word { font-size: 2.5rem; }
             .hero-title .small-word { font-size: 1.5rem; }
@@ -398,7 +408,25 @@
                 flex-direction: column;
                 justify-content: center;
                 text-align: left;
+                padding-left: 2rem;
             }
+        }
+        /* New Media Query for Medium Resolution Desktops (1025px to 1280px) */
+        @media (min-width: 1025px) and (max-width: 1280px) {
+            header {
+                height: 55vh;
+                padding-top: 60px;
+            }
+            .landing-content {
+                height: calc(55vh - 60px);
+                margin-top: 0;
+            }
+            .landing-content .hero-text {
+                width: 90%;
+                padding: 2rem;
+            }
+            .hero-title .large-word { font-size: 3rem; }
+            .hero-title .small-word { font-size: 2rem; }
         }
         @media (max-width: 480px) {
             .hero-subtitle { font-size: 1rem; }
@@ -407,25 +435,22 @@
         @media (max-width: 1024px) {
             .footer-container p {
                 text-align: center;
-                white-space: pre-line; /* Allows line breaks */
+                white-space: pre-line;
             }
-
             .footer-container p::before {
-                content: "\A"; /* Inserts a line break before "All Rights Reserved" */
+                content: "\A";
                 white-space: pre;
             }
         }
         @media (min-width: 1025px) {
             .footer-container p {
-                white-space: nowrap; /* Ensures text stays on a single line */
+                white-space: nowrap;
             }
-
             .footer-container p br {
-                display: none; /* Hides the forced break on desktop */
+                display: none;
             }
         }
     </style>
-
 </head>
 <body>
 <!-- Header Section -->
@@ -436,7 +461,7 @@
             <!-- Renamed About Us to About -->
             <li><a href="#about">About</a></li>
             <li><a href="#our-process">Our Process</a></li>
-<!--            <li><a href="#testimonials">Testimonials</a></li>-->
+            <!-- <li><a href="#testimonials">Testimonials</a></li> -->
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="hamburger" onclick="toggleMobileMenu()">
@@ -470,7 +495,7 @@
     <ul>
         <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
         <li><a href="#our-process" onclick="toggleMobileMenu()">Our Process</a></li>
-       <!-- <li><a href="#testimonials" onclick="toggleMobileMenu()">Testimonials</a></li> -->
+        <!-- <li><a href="#testimonials" onclick="toggleMobileMenu()">Testimonials</a></li> -->
         <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
     </ul>
 </div>
@@ -501,7 +526,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- Our Process Section (Gray Background with Cards) -->
 <section id="our-process">
@@ -536,24 +560,25 @@
     </div>
 </section>
 
-<!--&lt;!&ndash; Testimonials Section (White Background) &ndash;&gt;-->
-<!--<section id="testimonials">-->
-<!--    <div class="container">-->
-<!--        <h2>Testimonials</h2>-->
-<!--        <div class="testimonial-carousel">-->
-<!--            <div class="testimonial-slide" style="display: block;">-->
-<!--                <p>"Revamp Rezy transformed my resume and my career took off. Highly recommended!"</p>-->
-<!--                <h4>- Jane Doe</h4>-->
-<!--            </div>-->
-<!--            <div class="testimonial-slide">-->
-<!--                <p>"The personalized coaching and design made all the difference. I landed my dream job."</p>-->
-<!--                <h4>- John Smith</h4>-->
-<!--            </div>-->
-<!--            <button class="prev" onclick="prevSlide()">&#10094;</button>-->
-<!--            <button class="next" onclick="nextSlide()">&#10095;</button>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+<!--
+<section id="testimonials">
+  <div class="container">
+    <h2>Testimonials</h2>
+    <div class="testimonial-carousel">
+      <div class="testimonial-slide" style="display: block;">
+        <p>"Revamp Rezy transformed my resume and my career took off. Highly recommended!"</p>
+        <h4>- Jane Doe</h4>
+      </div>
+      <div class="testimonial-slide">
+        <p>"The personalized coaching and design made all the difference. I landed my dream job."</p>
+        <h4>- John Smith</h4>
+      </div>
+      <button class="prev" onclick="prevSlide()">&#10094;</button>
+      <button class="next" onclick="nextSlide()">&#10095;</button>
+    </div>
+  </div>
+</section>
+-->
 
 <!-- Contact Section (Gray Background) -->
 <section id="contact">
@@ -566,14 +591,13 @@
             <button type="submit" value="send">Send Message</button>
         </form>
         <p id="status-message" class="status-message"></p>
-
     </div>
 </section>
 
 <!-- Footer -->
 <footer>
     <div class="container footer-container">
-        <p>&copy 2025 HiredHelper LLC <br> All Rights Reserved</p>
+        <p>&copy; 2025 HiredHelper LLC <br> All Rights Reserved</p>
     </div>
 </footer>
 
@@ -612,7 +636,6 @@
 </script>
 <!-- Load EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         emailjs.init("_7eYQGBFzKQSVq75p"); // Initialize EmailJS with your Public Key
@@ -631,45 +654,33 @@
 
             // Hide the message until a response comes back
             statusMsg.style.display = "none";
-            statusMsg.classList.remove("success", "error"); // Clear previous styles
+            statusMsg.classList.remove("success", "error");
 
             emailjs.sendForm("service_2vz28dp", "template_cva9gzj", form)
                 .then(function(response) {
                     console.log("SUCCESS!", response.status, response.text);
-
                     statusMsg.textContent = "Your message has been sent successfully!";
                     statusMsg.classList.add("success");
-                    statusMsg.style.display = "block"; // Show after receiving response
+                    statusMsg.style.display = "block";
                     statusMsg.style.opacity = "0";
-
-                    setTimeout(() => {
-                        statusMsg.style.opacity = "1"; // Fade in
-                    }, 100);
-
-                    // Clear the form fields after successful submission
+                    setTimeout(() => { statusMsg.style.opacity = "1"; }, 100);
                     form.reset();
                 })
                 .catch(function(error) {
                     console.log("FAILED...", error);
-
                     statusMsg.textContent = "Oops! Something went wrong. Please try again.";
                     statusMsg.classList.add("error");
-                    statusMsg.style.display = "block"; // Show after receiving response
+                    statusMsg.style.display = "block";
                     statusMsg.style.opacity = "0";
-
-                    setTimeout(() => {
-                        statusMsg.style.opacity = "1"; // Fade in
-                    }, 100);
+                    setTimeout(() => { statusMsg.style.opacity = "1"; }, 100);
                 })
                 .finally(function() {
-                    // Re-enable the button and restore its original style
                     submitButton.disabled = false;
-                    submitButton.style.backgroundColor = ""; // Reset to default
+                    submitButton.style.backgroundColor = "";
                     submitButton.style.cursor = "pointer";
                 });
         });
     });
 </script>
-
 </body>
 </html>
