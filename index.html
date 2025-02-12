@@ -119,7 +119,7 @@
             .cta-button.mobile {
                 display: inline-block;
                 position: absolute;
-                bottom: 60px;
+                bottom: 15px; /* Changed from 60px to 20px above the bottom */
                 left: 50%;
                 transform: translateX(-50%);
                 background-color: #0F4C81;
@@ -272,16 +272,8 @@
             text-align: center;
             padding: 2rem;
         }
-        .testimonial-slide p {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #555;
-        }
-        .testimonial-slide h4 {
-            margin-top: 1rem;
-            color: #0F4C81;
-            font-weight: bold;
-        }
+        .testimonial-slide p { font-size: 1.2rem; font-style: italic; color: #555; }
+        .testimonial-slide h4 { margin-top: 1rem; color: #0F4C81; font-weight: bold; }
         .prev, .next {
             cursor: pointer;
             position: absolute;
@@ -376,10 +368,10 @@
             .landing-content {
                 position: relative;
                 height: 70vh;
-                margin-top: 60px;
+                margin-top: 0px;
             }
             .landing-content .hero-img { display: none; }
-            /* Position hero-text as an overlay card; equal padding on all sides and rounded edges */
+            /* Position hero-text as an overlay card; equal padding on all sides, rounded edges */
             .landing-content .hero-text {
                 position: absolute;
                 top: 50%;
@@ -389,7 +381,7 @@
                 padding: 1rem 2rem;
                 width: 90%;
                 text-align: left;
-                border-radius: 8px;  /* Added border radius to match the CTA button */
+                border-radius: 8px;  /* Rounded corners matching the CTA button */
             }
             .hero-title .large-word { font-size: 2.5rem; }
             .hero-title .small-word { font-size: 1.5rem; }
