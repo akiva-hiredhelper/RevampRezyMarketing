@@ -318,9 +318,22 @@
         #contact h3 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 2rem;
             color: #0F4C81;
         }
+        #contact h4 {
+            font-weight: 300;        /* keeps text light, not bold */
+            text-align: center;      /* centers it under the heading */
+            font-size: 1.50rem;      /* matches your site’s text scale */
+            margin-top: 0.5rem;
+        }
+        #contact h4 a {
+            color: #0F4C81;          /* brand color */
+            text-decoration: none;   /* removes underline */
+        }
+        #contact h4 a:hover {
+            text-decoration: underline; /* optional hover effect */
+        }
+
         #contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -595,13 +608,9 @@
 <section id="contact">
     <div class="container">
         <h3>Contact Us to Get Started</h3>
-        <form id="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" value="send">Send Message</button>
-        </form>
-        <p id="status-message" class="status-message"></p>
+        <h4 class="contact-email">
+            <a href="mailto:info@revamprezy.com">info@revamprezy.com</a>
+        </h4>
     </div>
 </section>
 
@@ -646,52 +655,52 @@
     }
 </script>
 <!-- Load EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        emailjs.init("_7eYQGBFzKQSVq75p"); // Initialize EmailJS with your Public Key
+<!--<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>-->
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", function() {-->
+<!--        emailjs.init("_7eYQGBFzKQSVq75p"); // Initialize EmailJS with your Public Key-->
 
-        document.getElementById("contact-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent form from refreshing the page
+<!--        document.getElementById("contact-form").addEventListener("submit", function(event) {-->
+<!--            event.preventDefault(); // Prevent form from refreshing the page-->
 
-            let form = this; // Reference to the form
-            let statusMsg = document.getElementById("status-message");
-            let submitButton = form.querySelector("button[type='submit']");
+<!--            let form = this; // Reference to the form-->
+<!--            let statusMsg = document.getElementById("status-message");-->
+<!--            let submitButton = form.querySelector("button[type='submit']");-->
 
-            // Disable the button & change its style while sending
-            submitButton.disabled = true;
-            submitButton.style.backgroundColor = "#ccc"; // Gray color
-            submitButton.style.cursor = "not-allowed";
+<!--            // Disable the button & change its style while sending-->
+<!--            submitButton.disabled = true;-->
+<!--            submitButton.style.backgroundColor = "#ccc"; // Gray color-->
+<!--            submitButton.style.cursor = "not-allowed";-->
 
-            // Hide the message until a response comes back
-            statusMsg.style.display = "none";
-            statusMsg.classList.remove("success", "error");
+<!--            // Hide the message until a response comes back-->
+<!--            statusMsg.style.display = "none";-->
+<!--            statusMsg.classList.remove("success", "error");-->
 
-            emailjs.sendForm("service_2vz28dp", "template_cva9gzj", form)
-                .then(function(response) {
-                    console.log("SUCCESS!", response.status, response.text);
-                    statusMsg.textContent = "Your message has been sent successfully!";
-                    statusMsg.classList.add("success");
-                    statusMsg.style.display = "block";
-                    statusMsg.style.opacity = "0";
-                    setTimeout(() => { statusMsg.style.opacity = "1"; }, 100);
-                    form.reset();
-                })
-                .catch(function(error) {
-                    console.log("FAILED...", error);
-                    statusMsg.textContent = "Oops! Something went wrong. Please try again.";
-                    statusMsg.classList.add("error");
-                    statusMsg.style.display = "block";
-                    statusMsg.style.opacity = "0";
-                    setTimeout(() => { statusMsg.style.opacity = "1"; }, 100);
-                })
-                .finally(function() {
-                    submitButton.disabled = false;
-                    submitButton.style.backgroundColor = "";
-                    submitButton.style.cursor = "pointer";
-                });
-        });
-    });
-</script>
+<!--            emailjs.sendForm("service_2vz28dp", "template_cva9gzj", form)-->
+<!--                .then(function(response) {-->
+<!--                    console.log("SUCCESS!", response.status, response.text);-->
+<!--                    statusMsg.textContent = "Your message has been sent successfully!";-->
+<!--                    statusMsg.classList.add("success");-->
+<!--                    statusMsg.style.display = "block";-->
+<!--                    statusMsg.style.opacity = "0";-->
+<!--                    setTimeout(() => { statusMsg.style.opacity = "1"; }, 100);-->
+<!--                    form.reset();-->
+<!--                })-->
+<!--                .catch(function(error) {-->
+<!--                    console.log("FAILED...", error);-->
+<!--                    statusMsg.textContent = "Oops! Something went wrong. Please try again.";-->
+<!--                    statusMsg.classList.add("error");-->
+<!--                    statusMsg.style.display = "block";-->
+<!--                    statusMsg.style.opacity = "0";-->
+<!--                    setTimeout(() => { statusMsg.style.opacity = "1"; }, 100);-->
+<!--                })-->
+<!--                .finally(function() {-->
+<!--                    submitButton.disabled = false;-->
+<!--                    submitButton.style.backgroundColor = "";-->
+<!--                    submitButton.style.cursor = "pointer";-->
+<!--                });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>
